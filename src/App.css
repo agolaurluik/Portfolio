@@ -3,8 +3,8 @@
 ========================================================= */
 
 :root {
-    --background-color: #071525;
-    --background-dots: #d6d6d677;
+  --background-color: #071525;
+  --background-dots: #d6d6d677;
   --border-color: #29435a;
 
   --primary: #63b7f3;
@@ -17,14 +17,13 @@
   --main-white: #f2faff;
   --main-navy: #071525;
 
-
   --intro-background: var(--main-white);
   --about-background: var(--main-blue);
   --projects-background: var(--main-white);
   --contact-background: var(--main-blue);
-  --section-height: 1080px;
-}
 
+  --section-height: 100vh;
+}
 
 
 /* =========================================================
@@ -47,19 +46,18 @@ html {
 
 body {
   min-height: 100vh;
+
   background-color: var(--background-color);
-
-  background-image: radial-gradient(
-    var(--background-dots) 1.5px,
-    transparent 1.5px
-  );
-
+  background-image: radial-gradient(var(--background-dots) 1.5px,
+      transparent 1.5px);
   background-size: 40px 40px;
   background-attachment: fixed;
 
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
+
   overflow-x: hidden;
+
   -webkit-font-smoothing: antialiased;
 }
 
@@ -130,7 +128,7 @@ h6 {
 ========================================================= */
 
 .portfolio {
-  width: 1400px;
+  width: min(1400px, 100% + 80px);
   margin: 0 auto;
 }
 
@@ -141,15 +139,15 @@ h6 {
 
 .introduction-section {
   position: relative;
+
   width: 100%;
-  height: var(--section-height);
-  min-height: 600px;
+  min-height: var(--section-height);
+
   overflow: hidden;
 
   background: var(--intro-background);
   color: var(--text-dark);
 }
-
 
 .introduction-section h1 {
   position: relative;
@@ -165,7 +163,7 @@ h6 {
   text-align: center;
 }
 
-.introduction-section > p {
+.introduction-section>p {
   position: relative;
   z-index: 1;
 
@@ -184,10 +182,12 @@ h6 {
 
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -35%);
 
   width: 100%;
   max-width: 1200px;
+
   padding: 0 40px;
 
   display: flex;
@@ -212,21 +212,111 @@ h6 {
 
   font-size: 22px;
   line-height: 1.5;
-  font-weight: 400;
-}
-
-.introduction-content p {
-  max-width: 620px;
-  margin-top: 32px;
-
-  font-size: 22px;
-  line-height: 1.5;
   text-align: center;
 }
 
-/* ---------------------------------------------------------
-   Section Divider
---------------------------------------------------------- */
+
+/* =========================================================
+   TECH STACK
+========================================================= */
+
+.tech-stack {
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+.tech-logo {
+  position: absolute;
+
+  width: 28px;
+  height: 28px;
+  max-width: none;
+
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+
+/* Top-left React */
+.tech-logo:nth-child(1) {
+  top: 23%;
+  left: 28%;
+
+  width: 100px;
+  height: 100px;
+}
+
+/* Top-right TypeScript */
+.tech-logo:nth-child(2) {
+  top: 24%;
+  right: 18%;
+
+  width: 100px;
+  height: 100px;
+}
+
+/* Left NodeJS */
+.tech-logo:nth-child(3) {
+  top: 43%;
+  left: 10%;
+
+  width: 100px;
+  height: 100px;
+}
+
+/* Right Java */
+.tech-logo:nth-child(4) {
+  top: 42%;
+  right: 10%;
+
+  width: 100px;
+  height: 100px;
+}
+
+/* Lower-left Spring Boot */
+.tech-logo:nth-child(5) {
+  top: 61%;
+  left: 19%;
+
+  width: 100px;
+  height: 100px;
+}
+
+/* Lower-right PostgreSQL */
+.tech-logo:nth-child(6) {
+  top: 74%;
+  right: 12%;
+
+  width: 100px;
+  height: 100px;
+}
+
+/* Bottom-left Docker */
+.tech-logo:nth-child(7) {
+  top: 78%;
+  left: 31%;
+
+  width: 100px;
+  height: 100px;
+}
+
+/* Bottom-right */
+.tech-logo:nth-child(8) {
+  top: 76%;
+  right: 31%;
+
+  width: 150px;
+  height: 150px;
+}
+
+
+/* =========================================================
+   SECTION DIVIDER
+========================================================= */
 
 .section-divider {
   position: absolute;
@@ -242,6 +332,8 @@ h6 {
   overflow: hidden;
 
   z-index: 0;
+
+  pointer-events: none;
 }
 
 .section-divider img {
@@ -261,7 +353,6 @@ h6 {
 .portfolio-header {
   position: relative;
   z-index: 2;
-  background: var(--main-blue);
 
   height: 100vh;
 
@@ -270,9 +361,9 @@ h6 {
   justify-content: flex-end;
 
   padding: 0 40px;
-  color: var(--text);
-  border-bottom: 2px solid var(--text);
-  
+
+  background: var(--main-blue);
+  color: var(--main-navy);
 
   animation: headerReveal 1s ease 1.5s forwards;
 }
@@ -295,7 +386,7 @@ h6 {
   align-items: center;
   justify-content: center;
 
-  border: 2px solid var(--text);
+  border: 3px solid var(--main-navy);
   border-radius: 50%;
 
   font-size: 20px;
@@ -316,7 +407,7 @@ h6 {
   position: absolute;
 
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 900;
 
   opacity: 0;
 
@@ -362,6 +453,38 @@ h6 {
 }
 
 
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-switch button {
+  background: none;
+  border: none;
+  padding: 0;
+
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.language-switch button.active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.language-switch button:hover {
+  opacity: 1;
+}
+
+.language-divider {
+  opacity: 0.3;
+}
+
 /* =========================================================
    PAGE CONTENT ANIMATION
 ========================================================= */
@@ -380,12 +503,14 @@ h6 {
 .projects {
   position: relative;
 
-  height: var(--section-height);
 
+  min-height: var(--section-height);
   display: grid;
-  grid-template-columns: 260px 1fr;
 
-  padding: 60px 40px 0;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 120px 1fr;
+
+  padding: 40px;
 
   color: var(--text-dark);
   background: var(--projects-background);
@@ -393,11 +518,33 @@ h6 {
 
 
 /* ---------------------------------------------------------
-   Project navigation
+   Projects Header
+--------------------------------------------------------- */
+
+.projects-header {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0;
+}
+
+.projects-header h2 {
+  font-size: clamp(48px, 8vw, 80px);
+  line-height: 1;
+}
+
+
+/* ---------------------------------------------------------
+   Project Navigation
 --------------------------------------------------------- */
 
 .project-navigation {
-  height: 70%;
+  grid-column: 1;
+  grid-row: 2;
+
+  height: 80%;
 
   display: flex;
   flex-direction: column;
@@ -422,7 +569,6 @@ h6 {
   border-radius: 16px 0 0 16px;
 
   background: var(--main-light-blue);
-
   color: var(--text-dark);
 
   text-align: left;
@@ -449,6 +595,7 @@ h6 {
 
   background: var(--main-navy);
   color: var(--text);
+
   border: none;
 
   font-weight: 600;
@@ -471,11 +618,14 @@ h6 {
 
 
 /* ---------------------------------------------------------
-   Project content
+   Project Content
 --------------------------------------------------------- */
 
 .project-content {
-  height: 70%;
+  grid-column: 2;
+  grid-row: 2;
+
+  height: 80%;
 
   min-width: 0;
   min-height: 0;
@@ -483,20 +633,20 @@ h6 {
   display: grid;
   grid-template-rows: auto 1fr;
 
-  background: transparent;
+  background: rgba(94, 93, 93, 0.055);
 
   border: 0;
 }
 
 
 /* ---------------------------------------------------------
-   Project description
+   Project Description
 --------------------------------------------------------- */
 
 .project-description {
   position: relative;
 
-  min-height: 0;
+  min-height: 340px;
 
   display: flex;
   flex-direction: column;
@@ -504,9 +654,10 @@ h6 {
 
   padding: 10px 40px 30px;
 
-  border-bottom: none;
+  border-top: 5px solid var(--border-color);
 }
-/* Adds triangle for the border end. */
+
+/* Adds triangle for the border end */
 .project-description::after {
   content: "";
 
@@ -520,13 +671,11 @@ h6 {
 
   background: var(--main-navy);
 
-  clip-path: polygon(
-    0 0,
-    calc(100% - 24px) 0,
-    100% 50%,
-    calc(100% - 24px) 100%,
-    0 100%
-  );
+  clip-path: polygon(0 0,
+      calc(100% - 24px) 0,
+      100% 50%,
+      calc(100% - 24px) 100%,
+      0 100%);
 }
 
 .project-label {
@@ -557,7 +706,7 @@ h6 {
 
 
 /* ---------------------------------------------------------
-   Project bottom
+   Project Bottom
 --------------------------------------------------------- */
 
 .project-bottom {
@@ -607,7 +756,7 @@ h6 {
 
 
 /* ---------------------------------------------------------
-   Project visual
+   Project Visual
 --------------------------------------------------------- */
 
 .project-visual {
@@ -619,16 +768,19 @@ h6 {
 
   gap: 70px;
 
-  padding: 50px 40px;
+  padding: 40px;
+
+  overflow: hidden;
 }
 
 .project-visual img {
-  width: 450px;
-  max-width: 45%;
+  width: 250px;
+  max-width: 100%;
+  height: auto;
 
   aspect-ratio: 16 / 10;
 
-  object-fit: contain;
+  object-fit: cover;
 
   border: 1px solid var(--border-color);
 
@@ -637,6 +789,8 @@ h6 {
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
+
+  cursor: zoom-in;
 }
 
 .project-visual img:hover {
@@ -644,6 +798,114 @@ h6 {
 
   box-shadow: 16px 16px 0 rgba(7, 21, 37, 0.16);
 }
+
+
+/* =========================================================
+   IMAGE LIGHTBOX
+========================================================= */
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background: rgba(7, 21, 37, 0.92);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  cursor: zoom-out;
+}
+
+.image-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.image-lightbox img {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 90vw;
+  max-height: 85vh;
+
+  object-fit: contain;
+
+  border: 1px solid var(--border-color);
+
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.25);
+
+  transform: scale(0.92);
+  opacity: 0;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease;
+
+  cursor: default;
+}
+
+.image-lightbox.open img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.image-lightbox-close {
+  position: absolute;
+
+  top: 24px;
+  right: 28px;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 2px solid var(--text);
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: var(--text);
+
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+  z-index: 2;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.image-lightbox-close:hover {
+  background: var(--text);
+  color: var(--main-navy);
+
+  transform: rotate(90deg);
+}
+
 
 /* =========================================================
    ABOUT
@@ -653,30 +915,31 @@ h6 {
   position: relative;
 
   width: 100%;
-  height: var(--section-height);
-  min-height: 600px;
+  min-height: var(--section-height);
 
   display: flex;
   flex-direction: column;
 
   padding: 40px;
-  padding-top: 20px;
 
   overflow: hidden;
+
   background: var(--about-background);
 }
 
 
 /* ---------------------------------------------------------
-   About header
+   About Header
 --------------------------------------------------------- */
 
 .about-header {
-  flex: 0 0 32%;
+  flex: 0 0 12%;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  padding-bottom: 20px;
 
   border-bottom: 1px solid var(--text);
 }
@@ -709,7 +972,7 @@ h6 {
 
 
 /* ---------------------------------------------------------
-   About grid
+   About Grid
 --------------------------------------------------------- */
 
 .about-grid {
@@ -726,7 +989,7 @@ h6 {
 
 
 /* ---------------------------------------------------------
-   About images
+   About Images
 --------------------------------------------------------- */
 
 .about-image {
@@ -739,26 +1002,8 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+
   transform: translateY(-35px);
-}
-
-.about-image::before {
-  content: "";
-
-  position: absolute;
-
-  width: 57%;
-  height: 73%;
-
-  background: black;
-
-  transform: translate(20px, 6px) rotate(1deg);
-
-  filter: blur(12px);
-
-  opacity: 0.8;
-
-  z-index: 0;
 }
 
 .about-image img {
@@ -768,18 +1013,24 @@ h6 {
 
   width: 77%;
   height: 77%;
-  margin-bottom: 26px;
 
+  margin-bottom: 26px;
+  
   object-fit: contain;
   object-position: center;
 
   transform: rotate(0deg);
+
   padding-bottom: 20px;
+
+  filter: drop-shadow(14px 14px 10px rgba(0, 0, 0, 0.6));
+  
+  
 }
 
 
 /* ---------------------------------------------------------
-   About text
+   About Text
 --------------------------------------------------------- */
 
 .about-text {
@@ -788,7 +1039,7 @@ h6 {
   display: grid;
 
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 0.7fr 1fr;
 
   gap: 30px 40px;
 
@@ -820,7 +1071,7 @@ h6 {
 
 
 /* ---------------------------------------------------------
-   About blocks
+   About Blocks
 --------------------------------------------------------- */
 
 .about-background {
@@ -849,7 +1100,7 @@ h6 {
 
 
 /* ---------------------------------------------------------
-   Hackathon image
+   Hackathon Image
 --------------------------------------------------------- */
 
 .about-hackathon-image {
@@ -863,30 +1114,13 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+
   transform: translateX(-20px);
-}
-
-.about-hackathon-image::before {
-  content: "";
-
-  position: absolute;
-
-  width: 57%;
-  height: 77%;
-
-  background: black;
-
-  transform: translate(18px, 0px) rotate(3deg);
-
-  filter: blur(12px);
-
-  opacity: 0.8;
-
-  z-index: 0;
 }
 
 .about-hackathon-image img {
   position: relative;
+
   z-index: 1;
 
   width: 77%;
@@ -896,6 +1130,8 @@ h6 {
   object-position: center;
 
   transform: rotate(3deg);
+
+  filter: drop-shadow(14px 14px 10px rgba(0, 0, 0, 0.6));
 }
 
 
@@ -905,9 +1141,12 @@ h6 {
 
 .contact {
   position: relative;
-  height: var(--section-height);
+
+  min-height: var(--section-height);
   padding: 40px;
+
   overflow: hidden;
+
   color: var(--text-dark);
   background: var(--contact-background);
 
@@ -915,25 +1154,44 @@ h6 {
   flex-direction: column;
 }
 
+
+/* ---------------------------------------------------------
+   Contact Header
+--------------------------------------------------------- */
+
 .contact-title {
+  height: 20%;
+
+  display: flex;
+  align-items: center;
+
   margin-left: 0;
 }
 
 .contact-title h2 {
-  font-size: clamp(70px, 10vw, 160px);
-  line-height: 0.9;
+  font-size: clamp(48px, 8vw, 80px);
+  line-height: 1;
 }
+
+
+/* ---------------------------------------------------------
+   Contact List
+--------------------------------------------------------- */
 
 .contact-list {
   display: flex;
   justify-content: center;
+
   margin-top: 100px;
 }
 
 .contact-links {
   width: 85%;
+
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   column-gap: 120px;
   row-gap: 80px;
 }
@@ -944,9 +1202,11 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   max-height: 140px;
   min-height: 140px;
   min-width: 180px;
+
   padding: 32px 40px;
 
   text-decoration: none;
@@ -954,17 +1214,14 @@ h6 {
 
   background: var(--intro-background);
 
-  /* 45° cut corners */
-  clip-path: polygon(
-    24px 0,
-    calc(100% - 24px) 0,
-    100% 24px,
-    100% calc(100% - 24px),
-    calc(100% - 24px) 100%,
-    24px 100%,
-    0 calc(100% - 24px),
-    0 24px
-  );
+  clip-path: polygon(24px 0,
+      calc(100% - 24px) 0,
+      100% 24px,
+      100% calc(100% - 24px),
+      calc(100% - 24px) 100%,
+      24px 100%,
+      0 calc(100% - 24px),
+      0 24px);
 
   transition:
     transform 180ms ease,
@@ -973,6 +1230,7 @@ h6 {
 
 .contact-links a:hover {
   transform: translateY(-6px);
+
   background: var(--primary);
 }
 
@@ -982,21 +1240,7 @@ h6 {
   font-size: 12px;
   letter-spacing: 0.15em;
   font-weight: 600;
-  opacity: 0.8;
-}
 
-.contact-value {
-  font-size: clamp(24px, 3vw, 48px);
-  font-weight: 500;
-}
-
-.contact-links a:hover .contact-value {
-  color: inherit;
-}
-
-.contact-label {
-  font-size: 12px;
-  letter-spacing: 0.15em;
   opacity: 0.9;
 }
 
@@ -1010,11 +1254,32 @@ h6 {
 }
 
 
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.portfolio-footer {
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  font-size: 12px;
+
+  background: var(--main-white);
+  color: var(--main-navy);
+}
+
+.portfolio-footer p {
+  margin: 0;
+}
 
 
-
-
-
+/* =========================================================
+   RECTANGLE TRACK
+========================================================= */
 
 .rectangle-track {
   width: max-content;
@@ -1040,24 +1305,6 @@ h6 {
   flex-shrink: 0;
 
   transform: rotate(3deg);
-}
-
-.contact-title {
-  height: 20%;
-
-  display: flex;
-  align-items: center;
-
-  margin-left: 40px;
-}
-
-.contact-title h2 {
-  font-size: clamp(48px, 8vw, 80px);
-  line-height: 1;
-}
-
-.contact-visual {
-  height: 80%;
 }
 
 
@@ -1156,8 +1403,8 @@ h6 {
     min-height: 600px;
   }
 
-    .introduction-content {
-    padding: 0 24px;
+  .introduction-content {
+    padding: 0 20px;
   }
 
   .introduction-content h1 {
@@ -1166,6 +1413,7 @@ h6 {
 
   .introduction-content p {
     max-width: 500px;
+
     font-size: 18px;
   }
 
@@ -1211,18 +1459,23 @@ h6 {
     min-height: 100vh;
 
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
 
+    padding: 20px;
+  }
+
+  .projects-header {
+    grid-column: 1;
+    grid-row: 1;
+
+    padding: 20px 0;
   }
 
   .project-navigation {
-    flex-direction: row;
+    grid-column: 1;
+    grid-row: 2;
 
-    padding: 0;
-
-    border-right: 0;
-    border-bottom: 1px solid var(--border-color);
-
-    overflow-x: auto;
+    height: auto;
   }
 
   .project-navigation-item {
@@ -1239,9 +1492,10 @@ h6 {
   }
 
   .project-content {
-    min-height: auto;
+    grid-column: 1;
+    grid-row: 3;
 
-    grid-template-rows: auto 60vh;
+    height: auto;
   }
 
   .project-description {
@@ -1267,11 +1521,9 @@ h6 {
     height: auto;
     min-height: 100vh;
 
-    padding: 30px 20px 60px;
+    padding: 20px 20px 60px;
 
     overflow: visible;
-
-
   }
 
   .about-header {
@@ -1334,10 +1586,13 @@ h6 {
   ------------------------------------------------------- */
 
   .contact {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
+
+    padding: 20px;
   }
 
   .contact-title {
-    margin-left: 20px;
+    margin-left: 0;
   }
 }

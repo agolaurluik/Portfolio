@@ -1,53 +1,170 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+type Language = "en" | "et";
+
 const projects = [
   {
     id: 1,
-    title: "Whiteboard",
+    title: "Realtime-Whiteboard",
     images: [
-      "/src/assets/placeholder.png",
-      "/src/assets/placeholder.png",
+      "/src/assets/whiteboardPic.png",
+      "/src/assets/whiteboardPic2.png",
     ],
     description:
-      "A realtime collaborative whiteboard built with React, TypeScript, Canvas and WebSockets.",
+      "A realtime collaborative whiteboard, inspired by similar tools like Excalidraw and Windows Paint. Users can draw, erase, and add text to the canvas, with all changes being synchronized in real-time across all connected clients. Currently, the project is in its early stages, and I'm actively working on adding new features and improving the user experience. Built by me and Rando Viimne.",
     technologies: ["React", "TypeScript", "Canvas", "WebSockets"],
   },
   {
     id: 2,
-    title: "Project Two",
+    title: "E-commerce Platform",
     images: [
-      "/src/assets/placeholder.png",
-      "/src/assets/placeholder-2.png",
+      "/src/assets/eShop1.png",
+      "/src/assets/eShop2.png",
     ],
-    description: "Short description of the second project.",
-    technologies: ["React", "TypeScript"],
+    description: "Solo project: A simple e-commerce platform, that turned out to be a great learning experience. It features a product catalog, shopping cart, and checkout process.",
+    technologies: ["React", "TypeScript", "Java", "SpringBoot", "PostgreSQL", "RabbitMQ"],
   },
   {
     id: 3,
-    title: "Project Three",
+    title: "Browser Sumo Game",
     images: [
-      "/src/assets/placeholder.png",
-      "/src/assets/placeholder-2.png",
+      "/src/assets/sumo1.png",
+      "/src/assets/sumo2.png",
     ],
-    description: "Short description of the third project.",
-    technologies: ["Java", "Spring", "PostgreSQL"],
-  },
-  {
-    id: 4,
-    title: "Project Four",
-    images: [
-      "/src/assets/placeholder.png",
-      "/src/assets/placeholder-2.png",
-    ],
-    description: "Short description of the fourth project.",
-    technologies: ["TypeScript", "React"],
-  },
+    description: "Simple browser-based sumo game. Instead of simple four directional movement, this game features more complex physics and interactions. Made by me, Rando Viimne and Jaanus Lille",
+    technologies: ["TypeScript", "React", "NodeJS", "Canvas", "WebSockets"],
+  }
 ];
+
+const techLogos = [
+  "/src/assets/react.svg",
+  "/src/assets/typescript.svg",
+  "/src/assets/nodeJS.svg",
+  "/src/assets/java.svg",
+  "/src/assets/spring.svg",
+  "/src/assets/postgresql.svg",
+  "/src/assets/docker.svg",
+  "/src/assets/rabbitmq.svg",
+];
+
+const translations = {
+  en: {
+    about: "About",
+    projects: "Projects",
+    contact: "Contact",
+    aboutMe: "About Me",
+
+    introduction:
+      "I like building things from the ground up, understanding how they work, and figuring out where they break.",
+
+    aboutIntro:
+      "I'm a full-stack developer with over two years of hands-on experience building web applications.",
+
+    background: "BACKGROUND",
+    backgroundText:
+      "I've been developing for over two years and have completed the Full Stack Development Programme at Kood/Jõhvi. Most of my experience has come from building projects and learning through solving problems rather than following predefined paths.",
+
+    currently: "CURRENTLY",
+    currentlyText:
+      "I'm focused on improving user experience and interface design in my Whiteboard project, and I'm also exploring options for implementing AI features into the project. Additionally, I'm actively seeking new opportunities to further develop my skills.",
+
+    hackathons: "HACKATHONS",
+    hackathonsText:
+      "I've participated in hackathons including the Wise Hackathon and Junction in Espoo. At Junction 2025, I worked on the Pfizer × Lääkärikeskus Aava challenge, where our team of four placed in the top 3.",
+
+    project: "PROJECT",
+    liveDemo: "Live Demo ↗",
+    github: "GitHub ↗",
+
+    email: "EMAIL",
+    linkedin: "LINKEDIN",
+    curriculumVitae: "Curriculum Vitae",
+
+    footer: "Designed & built by Ago-Laur Luik 2026",
+
+    projectsData: [
+      {
+        title: "Realtime-Whiteboard",
+        description:
+          "A realtime collaborative whiteboard, inspired by similar tools like Excalidraw and Windows Paint. Users can draw, erase, and add text to the canvas, with all changes being synchronized in real-time across all connected clients. Currently, the project is in its early stages, and I'm actively working on adding new features and improving the user experience. Built by me and Rando Viimne.",
+      },
+      {
+        title: "E-commerce Platform",
+        description:
+          "Solo project: A simple e-commerce platform that turned out to be a great learning experience. It features a product catalog, shopping cart, and checkout process.",
+      },
+      {
+        title: "Browser Sumo Game",
+        description:
+          "Simple browser-based sumo game. Instead of simple four directional movement, this game features more complex physics and interactions. Made by me, Rando Viimne and Jaanus Lille.",
+      },
+    ],
+  },
+
+  et: {
+    about: "Minust",
+    projects: "Projektid",
+    contact: "Kontakt",
+    aboutMe: "Minust",
+
+    introduction:
+      "Mulle meeldib asju algusest peale üles ehitada, mõista, kuidas need töötavad, ja välja selgitada, kus need katki lähevad.",
+
+    aboutIntro:
+      "Olen full-stack arendaja, kellel on üle kahe aasta praktilist kogemust veebirakenduste loomisel.",
+
+    background: "TAUST",
+    backgroundText:
+      "Olen tegelenud arendusega üle kahe aasta ning lõpetanud Kood/Jõhvi Full Stack Development Programmi. Suurem osa minu kogemusest on tulnud projektide ehitamisest ja probleemide lahendamise kaudu õppimisest, mitte etteantud õppeplaanide järgimisest.",
+
+    currently: "PRAEGU",
+    currentlyText:
+      "Keskendun oma Whiteboardi projektis kasutajakogemuse ja kasutajaliidese parandamisele ning uurin ka võimalusi AI-funktsioonide lisamiseks. Lisaks otsin aktiivselt uusi võimalusi oma oskuste edasiarendamiseks.",
+
+    hackathons: "HÄKATONID",
+    hackathonsText:
+      "Olen osalenud häkatonidel, sealhulgas Wise Hackathonil ja Espoos toimunud Junctionil. Junction 2025-l töötasin Pfizer × Lääkärikeskus Aava väljakutse kallal, kus meie neljaliikmeline tiim saavutas 3 parima hulgas tulemuse.",
+
+    project: "PROJEKT",
+    liveDemo: "Live Demo ↗",
+    github: "GitHub ↗",
+
+    email: "E-POST",
+    linkedin: "LINKEDIN",
+    curriculumVitae: "CV",
+
+    footer: "Disaininud ja ehitanud Ago-Laur Luik 2026",
+
+    projectsData: [
+      {
+        title: "Realtime-Whiteboard",
+        description:
+          "Reaalajas töötav koostöötahvel, mis on inspireeritud sellistest tööriistadest nagu Excalidraw ja Windows Paint. Kasutajad saavad lõuendile joonistada, kustutada ja teksti lisada ning kõik muudatused sünkroniseeritakse reaalajas kõigi ühendatud kasutajate vahel. Projekt on hetkel varajases arendusjärgus ning tegelen aktiivselt uute funktsioonide lisamise ja kasutajakogemuse parandamisega. Projekti arendame mina ja Rando Viimne.",
+      },
+      {
+        title: "E-poe platvorm",
+        description:
+          "Iseseisev projekt: lihtne e-poe platvorm, millest kujunes väga hea õpikogemus. Projekt sisaldab toodete kataloogi, ostukorvi ja maksmise protsessi.",
+      },
+      {
+        title: "Brauseri Sumo mäng",
+        description:
+          "Lihtne brauseris töötav sumomäng. Neljasuunalise lihtsa liikumise asemel kasutab mäng keerukamat füüsikat ja objektide omavahelist suhtlust. Tegime projekti koos Rando Viimse ja Jaanus Lillega.",
+      },
+    ],
+  },
+};
 
 export default function PortfolioPage() {
 
   const [activeProject, setActiveProject] = useState(0);
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const [language, setLanguage] = useState<Language>("en");
+
+  const t = translations[language];
 
   useEffect(() => {
     const preventScroll = (event: WheelEvent) => {
@@ -67,12 +184,8 @@ export default function PortfolioPage() {
   }, []);
 
   const project = projects[activeProject];
-  const initialViewportHeight = window.innerHeight;
+  const translatedProject = t.projectsData[activeProject];
 
-  document.documentElement.style.setProperty(
-    "--section-height",
-    `${initialViewportHeight}px`
-  );
   return (
     <main className="portfolio">
 
@@ -86,20 +199,47 @@ export default function PortfolioPage() {
           </div>
 
           <nav>
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a href="#about">{t.about}</a>
+            <a href="#projects">{t.projects}</a>
+            <a href="#contact">{t.contact}</a>
+
+            <div className="language-switch">
+              <button
+                className={language === "en" ? "active" : ""}
+                onClick={() => setLanguage("en")}
+                aria-label="Switch to English"
+              >
+                🇬🇧 EN
+              </button>
+
+              <span className="language-divider">|</span>
+
+              <button
+                className={language === "et" ? "active" : ""}
+                onClick={() => setLanguage("et")}
+                aria-label="Switch to Estonian"
+              >
+                🇪🇪 ET
+              </button>
+            </div>
           </nav>
         </header>
 
         <div className="introduction-content">
           <h1>FULL-STACK DEVELOPER</h1>
 
-          <p>
-            I like building things from the ground up, understanding how they work,
-            and figuring out where they break.
-          </p>
+          <p>{t.introduction}</p>
+        </div>
+
+        <div className="tech-stack">
+          {techLogos.map((logo, index) => (
+            <img
+              key={index}
+              className="tech-logo"
+              src={logo}
+              alt=""
+            />
+          ))}
         </div>
 
         <div className="section-divider">
@@ -115,17 +255,11 @@ export default function PortfolioPage() {
       <section id="about" className="about-section page-content">
 
         <div className="about-header">
-          <span className="section-label">
-            02
-          </span>
 
-          <h2>
-            About Me and My Background
-          </h2>
+          <h2>{t.aboutMe}</h2>
 
           <p className="about-intro">
-            I'm a full-stack developer with over two years of
-            hands-on experience building web applications.
+            {t.aboutIntro}
           </p>
         </div>
 
@@ -141,36 +275,21 @@ export default function PortfolioPage() {
           <div className="about-text">
 
             <div className="about-block about-background">
-              <span className="about-label">BACKGROUND</span>
+              <span className="about-label">{t.background}</span>
 
-              <p>
-                I've been developing for over two years, recently completing
-                the Full Stack Development Programme at Kood/Jõhvi. Most of
-                my experience has come from building projects and learning
-                through solving problems rather than following predefined
-                paths.
-              </p>
+              <p>{t.backgroundText}</p>
             </div>
 
             <div className="about-block about-currently">
-              <span className="about-label">CURRENTLY</span>
+              <span className="about-label">{t.currently}</span>
 
-              <p>
-                I'm focused on building projects that challenge me to go
-                deeper into both frontend and backend development while
-                continuing to grow as a developer.
-              </p>
+              <p>{t.currentlyText}</p>
             </div>
 
             <div className="about-block about-hackathons">
-              <span className="about-label">HACKATHONS</span>
+              <span className="about-label">{t.hackathons}</span>
 
-              <p>
-                I've participated in hackathons including the Wise Hackathon
-                and Junction in Espoo. At Junction 2025, I worked on the
-                Pfizer × Lääkärikeskus Aava challenge, where our team placed
-                in the top 3.
-              </p>
+              <p> {t.hackathonsText} </p>
 
               <div className="about-image about-hackathon-image">
                 <img
@@ -194,6 +313,10 @@ export default function PortfolioPage() {
       {/* Projects */}
       <section id="projects" className="projects page-content">
 
+        <div className="projects-header">
+          <h2>{t.projects}</h2>
+        </div>
+
         <aside className="project-navigation">
           {projects.map((project, index) => (
             <button
@@ -207,7 +330,7 @@ export default function PortfolioPage() {
               </span>
 
               <span className="project-title">
-                {project.title}
+                {t.projectsData[index].title}
               </span>
             </button>
           ))}
@@ -218,15 +341,15 @@ export default function PortfolioPage() {
           <div className="project-description">
             <div>
               <p className="project-label">
-                PROJECT {String(project.id).padStart(2, "0")}
+                {t.project} {String(project.id).padStart(2, "0")}
               </p>
 
               <h1>
-                {project.title}
+                {translatedProject.title}
               </h1>
 
               <p className="description">
-                {project.description}
+                {translatedProject.description}
               </p>
             </div>
 
@@ -240,8 +363,8 @@ export default function PortfolioPage() {
               </div>
 
               <div className="project-links">
-                <a href="#">Live Demo ↗</a>
-                <a href="#">GitHub ↗</a>
+                <a href="#"> {t.liveDemo}</a>
+                <a href="#"> {t.github}</a>
               </div>
             </div>
           </div>
@@ -252,6 +375,7 @@ export default function PortfolioPage() {
                 key={image}
                 src={image}
                 alt={`${project.title} screenshot ${index + 1}`}
+                onClick={() => setSelectedImage(image)}
               />
             ))}
           </div>
@@ -272,13 +396,13 @@ export default function PortfolioPage() {
       <section id="contact" className="contact page-content">
 
         <div className="contact-title">
-          <h2>Contact</h2>
+          <h2>{t.contact} & Info</h2>
         </div>
         <div className="contact-list">
 
           <div className="contact-links">
             <a href="mailto:ago.laur@gmail.com">
-              <span className="contact-label">EMAIL</span>
+              <span className="contact-label">{t.email}</span>
               <span className="contact-value">ago.laur@gmail.com</span>
             </a>
 
@@ -287,12 +411,12 @@ export default function PortfolioPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="contact-label">LINKEDIN</span>
+              <span className="contact-label">{t.linkedin}</span>
               <span className="contact-value">LinkedIn ↗</span>
             </a>
 
             <a href="https://www.dropbox.com/scl/fi/your-cv-file.pdf?rlkey=your-key&dl=1" target="_blank" rel="noopener noreferrer">
-              <span className="contact-label">Curriculum Vitae</span>
+              <span className="contact-label">{t.curriculumVitae}</span>
               <span className="contact-value">Ago-Laur Luik</span>
             </a>
           </div>
@@ -308,7 +432,34 @@ export default function PortfolioPage() {
       </section>
 
 
+      <div
+        className={`image-lightbox ${selectedImage ? "open" : ""}`}
+        onClick={() => setSelectedImage(null)}
+      >
+        <button
+          className="image-lightbox-close"
+          onClick={() => setSelectedImage(null)}
+          aria-label="Close image"
+        >
+          ×
+        </button>
 
+        {selectedImage && (
+          <img
+            src={selectedImage}
+            alt="Full size project screenshot"
+            onClick={(event) => event.stopPropagation()}
+          />
+        )}
+      </div>
+
+
+
+      <footer className="portfolio-footer">
+        <p>{t.footer}</p>
+      </footer>
     </main>
+
+
   );
 }
