@@ -205,30 +205,32 @@ export default function PortfolioPage() {
 
             <div className="language-switch">
               <button
-                className={language === "en" ? "active" : ""}
+                className={`language-button ${language === "en" ? "active" : ""}`}
                 onClick={() => setLanguage("en")}
                 aria-label="Switch to English"
               >
-                🇬🇧 EN
+                <img src="/src/assets/uk-flag.svg" alt="English" />
               </button>
 
-              <span className="language-divider">|</span>
-
               <button
-                className={language === "et" ? "active" : ""}
+                className={`language-button ${language === "et" ? "active" : ""}`}
                 onClick={() => setLanguage("et")}
                 aria-label="Switch to Estonian"
               >
-                🇪🇪 ET
+                <img src="/src/assets/estonia-flag.svg" alt="Estonian" />
               </button>
             </div>
           </nav>
         </header>
 
         <div className="introduction-content">
-          <h1>FULL-STACK DEVELOPER</h1>
+          <h1 className="text-display">
+            FULL-STACK DEVELOPER
+          </h1>
 
-          <p>{t.introduction}</p>
+          <p className="text-body-large">
+            {t.introduction}
+          </p>
         </div>
 
         <div className="tech-stack">
@@ -256,9 +258,11 @@ export default function PortfolioPage() {
 
         <div className="about-header">
 
-          <h2>{t.aboutMe}</h2>
+          <h2 className="text-large-title">
+            {t.aboutMe}
+          </h2>
 
-          <p className="about-intro">
+          <p className="about-intro text-body">
             {t.aboutIntro}
           </p>
         </div>
@@ -275,21 +279,31 @@ export default function PortfolioPage() {
           <div className="about-text">
 
             <div className="about-block about-background">
-              <span className="about-label">{t.background}</span>
+              <span className="about-label text-label">
+                {t.background}
+              </span>
 
               <p>{t.backgroundText}</p>
             </div>
 
             <div className="about-block about-currently">
-              <span className="about-label">{t.currently}</span>
+              <span className="about-label text-label">
+                {t.currently}
+              </span>
 
-              <p>{t.currentlyText}</p>
+              <p className="text-body-small">
+                {t.currentlyText}
+              </p>
             </div>
 
             <div className="about-block about-hackathons">
-              <span className="about-label">{t.hackathons}</span>
+              <span className="about-label text-label">
+                {t.hackathons}
+              </span>
 
-              <p> {t.hackathonsText} </p>
+              <p className="text-body-small">
+                {t.hackathonsText}
+              </p>
 
               <div className="about-image about-hackathon-image">
                 <img
@@ -314,7 +328,9 @@ export default function PortfolioPage() {
       <section id="projects" className="projects page-content">
 
         <div className="projects-header">
-          <h2>{t.projects}</h2>
+          <h2 className="text-section-title">
+            {t.projects}
+          </h2>
         </div>
 
         <aside className="project-navigation">
@@ -325,7 +341,7 @@ export default function PortfolioPage() {
                 }`}
               onClick={() => setActiveProject(index)}
             >
-              <span className="project-number">
+              <span className="project-number text-label">
                 0{project.id}
               </span>
 
@@ -340,15 +356,15 @@ export default function PortfolioPage() {
 
           <div className="project-description">
             <div>
-              <p className="project-label">
+              <p className="project-label text-label">
                 {t.project} {String(project.id).padStart(2, "0")}
               </p>
 
-              <h1>
-                {translatedProject.title}
-              </h1>
+              <h2 className="text-section-title">
+                {t.projectsData[activeProject].title}
+              </h2>
 
-              <p className="description">
+              <p className="description text-body-small">
                 {translatedProject.description}
               </p>
             </div>
@@ -396,13 +412,17 @@ export default function PortfolioPage() {
       <section id="contact" className="contact page-content">
 
         <div className="contact-title">
-          <h2>{t.contact} & Info</h2>
+          <h2 className="text-section-title">
+            {t.contact} & Info
+          </h2>
         </div>
         <div className="contact-list">
 
           <div className="contact-links">
             <a href="mailto:ago.laur@gmail.com">
-              <span className="contact-label">{t.email}</span>
+              <span className="contact-label text-label">
+                {t.email}
+              </span>
               <span className="contact-value">ago.laur@gmail.com</span>
             </a>
 
@@ -411,12 +431,16 @@ export default function PortfolioPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="contact-label">{t.linkedin}</span>
+              <span className="contact-label text-label">
+                {t.linkedin}
+              </span>
               <span className="contact-value">LinkedIn ↗</span>
             </a>
 
             <a href="https://www.dropbox.com/scl/fi/your-cv-file.pdf?rlkey=your-key&dl=1" target="_blank" rel="noopener noreferrer">
-              <span className="contact-label">{t.curriculumVitae}</span>
+              <span className="contact-label text-label">
+                {t.curriculumVitae}
+              </span>
               <span className="contact-value">Ago-Laur Luik</span>
             </a>
           </div>

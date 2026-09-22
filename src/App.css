@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
 /* =========================================================
    VARIABLES
 ========================================================= */
 
 :root {
+  /* ---------------------------------------------------------
+     Colors
+  --------------------------------------------------------- */
+
   --background-color: #071525;
   --background-dots: #d6d6d677;
   --border-color: #29435a;
@@ -17,13 +23,52 @@
   --main-white: #f2faff;
   --main-navy: #071525;
 
+
+  /* ---------------------------------------------------------
+     Typography
+  --------------------------------------------------------- */
+
+  --font-family: 'Roboto Slab', serif;
+
+  --font-size-display: clamp(64px, 7vw, 120px);
+  --font-size-section-title: clamp(48px, 8vw, 80px);
+  --font-size-large-title: clamp(42px, 5vw, 72px);
+  --font-size-project-title: clamp(42px, 4vw, 64px);
+
+  --font-size-body-large: 22px;
+  --font-size-body: 17px;
+  --font-size-body-small: 15px;
+  --font-size-label: 11px;
+  --font-size-small: 12px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 800;
+  --font-weight-black: 900;
+
+  --line-height-tight: 0.9;
+  --line-height-heading: 0.95;
+  --line-height-body: 1.5;
+
+  --letter-spacing-tight: -0.06em;
+  --letter-spacing-heading: -0.04em;
+  --letter-spacing-label: 0.12em;
+
+
+  /* ---------------------------------------------------------
+     Sections
+  --------------------------------------------------------- */
+
   --intro-background: var(--main-white);
   --about-background: var(--main-blue);
   --projects-background: var(--main-white);
   --contact-background: var(--main-blue);
+  
+  --section-height: clamp(750px, 100vh, 950px);
 
-  --section-height: 100vh;
 }
+
 
 
 /* =========================================================
@@ -48,12 +93,15 @@ body {
   min-height: 100vh;
 
   background-color: var(--background-color);
-  background-image: radial-gradient(var(--background-dots) 1.5px,
-      transparent 1.5px);
+  background-image: radial-gradient(
+    var(--background-dots) 1.5px,
+    transparent 1.5px
+  );
   background-size: 40px 40px;
   background-attachment: fixed;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family);
+  font-optical-sizing: auto;
   line-height: 1.5;
 
   overflow-x: hidden;
@@ -123,6 +171,110 @@ h6 {
 }
 
 
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+/* ---------------------------------------------------------
+   Display
+--------------------------------------------------------- */
+
+.text-display {
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+
+/* ---------------------------------------------------------
+   Section Title
+--------------------------------------------------------- */
+
+.text-section-title {
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+
+/* ---------------------------------------------------------
+   Large Title
+--------------------------------------------------------- */
+
+.text-large-title {
+  font-size: var(--font-size-large-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+
+/* ---------------------------------------------------------
+   Project Title
+--------------------------------------------------------- */
+
+.text-project-title {
+  font-size: var(--font-size-project-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+
+/* ---------------------------------------------------------
+   Body Large
+--------------------------------------------------------- */
+
+.text-body-large {
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+}
+
+
+/* ---------------------------------------------------------
+   Body
+--------------------------------------------------------- */
+
+.text-body {
+  font-size: var(--font-size-body);
+  line-height: 1.45;
+}
+
+
+/* ---------------------------------------------------------
+   Body Small
+--------------------------------------------------------- */
+
+.text-body-small {
+  font-size: var(--font-size-body-small);
+  line-height: var(--line-height-body);
+}
+
+
+/* ---------------------------------------------------------
+   Label
+--------------------------------------------------------- */
+
+.text-label {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-label);
+}
+
+
+/* ---------------------------------------------------------
+   Small
+--------------------------------------------------------- */
+
+.text-small {
+  font-size: var(--font-size-small);
+}
+
+
+
 /* =========================================================
    MAIN PORTFOLIO
 ========================================================= */
@@ -131,6 +283,7 @@ h6 {
   width: min(1400px, 100% + 80px);
   margin: 0 auto;
 }
+
 
 
 /* =========================================================
@@ -147,33 +300,6 @@ h6 {
 
   background: var(--intro-background);
   color: var(--text-dark);
-}
-
-.introduction-section h1 {
-  position: relative;
-  z-index: 1;
-
-  margin: 0;
-  max-width: 1000px;
-
-  font-size: clamp(64px, 7vw, 120px);
-  font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  text-align: center;
-}
-
-.introduction-section>p {
-  position: relative;
-  z-index: 1;
-
-  max-width: 620px;
-  margin-top: 32px;
-
-  font-size: 22px;
-  line-height: 1.5;
-  font-weight: 400;
-  text-align: center;
 }
 
 .introduction-content {
@@ -199,21 +325,16 @@ h6 {
 
 .introduction-content h1 {
   margin: 0;
-
-  font-size: clamp(64px, 7vw, 120px);
-  font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
 }
 
 .introduction-content p {
   max-width: 620px;
+
   margin-top: 32px;
 
-  font-size: 22px;
-  line-height: 1.5;
   text-align: center;
 }
+
 
 
 /* =========================================================
@@ -250,6 +371,7 @@ h6 {
   height: 100px;
 }
 
+
 /* Top-right TypeScript */
 .tech-logo:nth-child(2) {
   top: 24%;
@@ -258,6 +380,7 @@ h6 {
   width: 100px;
   height: 100px;
 }
+
 
 /* Left NodeJS */
 .tech-logo:nth-child(3) {
@@ -268,6 +391,7 @@ h6 {
   height: 100px;
 }
 
+
 /* Right Java */
 .tech-logo:nth-child(4) {
   top: 42%;
@@ -276,6 +400,7 @@ h6 {
   width: 100px;
   height: 100px;
 }
+
 
 /* Lower-left Spring Boot */
 .tech-logo:nth-child(5) {
@@ -286,6 +411,7 @@ h6 {
   height: 100px;
 }
 
+
 /* Lower-right PostgreSQL */
 .tech-logo:nth-child(6) {
   top: 74%;
@@ -294,6 +420,7 @@ h6 {
   width: 100px;
   height: 100px;
 }
+
 
 /* Bottom-left Docker */
 .tech-logo:nth-child(7) {
@@ -304,7 +431,8 @@ h6 {
   height: 100px;
 }
 
-/* Bottom-right */
+
+/* Bottom-right RabbitMQ */
 .tech-logo:nth-child(8) {
   top: 76%;
   right: 31%;
@@ -312,6 +440,7 @@ h6 {
   width: 150px;
   height: 150px;
 }
+
 
 
 /* =========================================================
@@ -346,6 +475,7 @@ h6 {
 }
 
 
+
 /* =========================================================
    HEADER
 ========================================================= */
@@ -369,6 +499,7 @@ h6 {
 }
 
 
+
 /* ---------------------------------------------------------
    Logo
 --------------------------------------------------------- */
@@ -390,7 +521,7 @@ h6 {
   border-radius: 50%;
 
   font-size: 20px;
-  font-weight: 800;
+  font-weight: var(--font-weight-bold);
 
   transform: translate(-50%, -50%);
 
@@ -406,13 +537,14 @@ h6 {
 .logo-initials {
   position: absolute;
 
-  font-size: 12px;
-  font-weight: 900;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-black);
 
   opacity: 0;
 
   animation: initialsAppear 0.4s ease 1.5s forwards;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -438,7 +570,7 @@ h6 {
   border-left: 1px solid transparent;
 
   font-size: 17px;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 
@@ -453,6 +585,11 @@ h6 {
 }
 
 
+
+/* ---------------------------------------------------------
+   Language Switch
+--------------------------------------------------------- */
+
 .language-switch {
   display: flex;
   align-items: center;
@@ -460,30 +597,56 @@ h6 {
 }
 
 .language-switch button {
-  background: none;
-  border: none;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  color: inherit;
-  font: inherit;
+  background: rgba(0, 0, 0, 0.18);
+
+  border: none;
+
+  padding: 4px;
+
+  border-radius: 5px;
+
   cursor: pointer;
 
   opacity: 0.5;
-  transition: opacity 0.2s ease;
+
+  transition:
+    opacity 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.language-button img {
+  display: block;
+
+  width: 28px;
+  height: 18px;
+
+  object-fit: cover;
+
+  border-radius: 3px;
 }
 
 .language-switch button.active {
   opacity: 1;
-  font-weight: 600;
 }
 
 .language-switch button:hover {
   opacity: 1;
+
+  background: rgba(0, 0, 0, 0.28);
+
+  transform: translateY(-1px);
 }
 
 .language-divider {
   opacity: 0.3;
 }
+
+
 
 /* =========================================================
    PAGE CONTENT ANIMATION
@@ -496,6 +659,7 @@ h6 {
 }
 
 
+
 /* =========================================================
    PROJECTS
 ========================================================= */
@@ -503,8 +667,8 @@ h6 {
 .projects {
   position: relative;
 
-
   min-height: var(--section-height);
+
   display: grid;
 
   grid-template-columns: 260px 1fr;
@@ -517,6 +681,7 @@ h6 {
 }
 
 
+
 /* ---------------------------------------------------------
    Projects Header
 --------------------------------------------------------- */
@@ -527,13 +692,13 @@ h6 {
   display: flex;
   align-items: center;
 
-  padding: 0;
+  padding-bottom: 30px;
 }
 
 .projects-header h2 {
-  font-size: clamp(48px, 8vw, 80px);
-  line-height: 1;
+  margin: 0;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -587,7 +752,7 @@ h6 {
 
   background: var(--main-blue);
 
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .project-navigation-item.active {
@@ -598,7 +763,7 @@ h6 {
 
   border: none;
 
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 
   transform: translateX(12px);
 }
@@ -606,7 +771,7 @@ h6 {
 .project-number {
   margin-bottom: 8px;
 
-  font-size: 11px;
+  font-size: var(--font-size-label);
   letter-spacing: 0.1em;
 
   opacity: 0.5;
@@ -617,9 +782,10 @@ h6 {
 }
 
 
-/* ---------------------------------------------------------
-   Project Content
---------------------------------------------------------- */
+
+/* =========================================================
+   PROJECT CONTENT
+========================================================= */
 
 .project-content {
   grid-column: 2;
@@ -631,12 +797,14 @@ h6 {
   min-height: 0;
 
   display: grid;
+
   grid-template-rows: auto 1fr;
 
   background: rgba(94, 93, 93, 0.055);
 
   border: 0;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -657,7 +825,6 @@ h6 {
   border-top: 5px solid var(--border-color);
 }
 
-/* Adds triangle for the border end */
 .project-description::after {
   content: "";
 
@@ -671,38 +838,29 @@ h6 {
 
   background: var(--main-navy);
 
-  clip-path: polygon(0 0,
-      calc(100% - 24px) 0,
-      100% 50%,
-      calc(100% - 24px) 100%,
-      0 100%);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 24px) 0,
+    100% 50%,
+    calc(100% - 24px) 100%,
+    0 100%
+  );
 }
 
 .project-label {
   margin-bottom: 12px;
-
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
 
   opacity: 0.6;
 }
 
 .project-description h1 {
   margin-bottom: 16px;
-
-  font-size: clamp(42px, 4vw, 64px);
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
 }
 
 .description {
   max-width: 650px;
-
-  font-size: 16px;
-  line-height: 1.5;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -732,7 +890,7 @@ h6 {
   border: 1px solid var(--border-color);
   border-radius: 100px;
 
-  font-size: 11px;
+  font-size: var(--font-size-label);
 }
 
 .project-links {
@@ -746,13 +904,15 @@ h6 {
 
   border-bottom: 1px dotted var(--border-color);
 
-  font-size: 12px;
+  font-size: var(--font-size-small);
+
   text-transform: uppercase;
 }
 
 .project-links a:hover {
   opacity: 0.7;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -798,6 +958,7 @@ h6 {
 
   box-shadow: 16px 16px 0 rgba(7, 21, 37, 0.16);
 }
+
 
 
 /* =========================================================
@@ -850,6 +1011,7 @@ h6 {
   box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.25);
 
   transform: scale(0.92);
+
   opacity: 0;
 
   transition:
@@ -880,6 +1042,7 @@ h6 {
   padding: 0;
 
   border: 2px solid var(--text);
+
   border-radius: 50%;
 
   background: transparent;
@@ -891,6 +1054,7 @@ h6 {
   line-height: 1;
 
   cursor: pointer;
+
   z-index: 2;
 
   transition:
@@ -905,6 +1069,7 @@ h6 {
 
   transform: rotate(90deg);
 }
+
 
 
 /* =========================================================
@@ -928,6 +1093,7 @@ h6 {
 }
 
 
+
 /* ---------------------------------------------------------
    About Header
 --------------------------------------------------------- */
@@ -947,28 +1113,19 @@ h6 {
 .about-header .section-label {
   margin-bottom: 14px;
 
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-
   opacity: 0.9;
 }
 
 .about-header h2 {
   margin-bottom: 18px;
-
-  font-size: clamp(42px, 5vw, 72px);
-  line-height: 0.9;
-  letter-spacing: -0.06em;
 }
 
 .about-intro {
   max-width: 700px;
 
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 1.45;
+  font-weight: var(--font-weight-semibold);
 }
+
 
 
 /* ---------------------------------------------------------
@@ -980,12 +1137,14 @@ h6 {
   min-height: 0;
 
   display: grid;
+
   grid-template-columns: 0.55fr 1.25fr;
 
   gap: 20px;
 
   padding-top: 15px;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -1015,7 +1174,7 @@ h6 {
   height: 77%;
 
   margin-bottom: 26px;
-  
+
   object-fit: contain;
   object-position: center;
 
@@ -1023,10 +1182,11 @@ h6 {
 
   padding-bottom: 20px;
 
-  filter: drop-shadow(14px 14px 10px rgba(0, 0, 0, 0.6));
-  
-  
+  filter: drop-shadow(
+    14px 14px 10px rgba(0, 0, 0, 0.6)
+  );
 }
+
 
 
 /* ---------------------------------------------------------
@@ -1055,9 +1215,9 @@ h6 {
 
   margin-bottom: 14px;
 
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-label);
 
   opacity: 0.9;
 }
@@ -1065,9 +1225,10 @@ h6 {
 .about-block p {
   max-width: 500px;
 
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: var(--font-size-body-small);
+  line-height: var(--line-height-body);
 }
+
 
 
 /* ---------------------------------------------------------
@@ -1097,6 +1258,7 @@ h6 {
   display: flex;
   flex-direction: column;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -1131,8 +1293,11 @@ h6 {
 
   transform: rotate(3deg);
 
-  filter: drop-shadow(14px 14px 10px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(
+    14px 14px 10px rgba(0, 0, 0, 0.6)
+  );
 }
+
 
 
 /* =========================================================
@@ -1143,6 +1308,7 @@ h6 {
   position: relative;
 
   min-height: var(--section-height);
+
   padding: 40px;
 
   overflow: hidden;
@@ -1153,6 +1319,7 @@ h6 {
   display: flex;
   flex-direction: column;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -1169,9 +1336,9 @@ h6 {
 }
 
 .contact-title h2 {
-  font-size: clamp(48px, 8vw, 80px);
-  line-height: 1;
+  margin: 0;
 }
+
 
 
 /* ---------------------------------------------------------
@@ -1214,14 +1381,16 @@ h6 {
 
   background: var(--intro-background);
 
-  clip-path: polygon(24px 0,
-      calc(100% - 24px) 0,
-      100% 24px,
-      100% calc(100% - 24px),
-      calc(100% - 24px) 100%,
-      24px 100%,
-      0 calc(100% - 24px),
-      0 24px);
+  clip-path: polygon(
+    24px 0,
+    calc(100% - 24px) 0,
+    100% 24px,
+    100% calc(100% - 24px),
+    calc(100% - 24px) 100%,
+    24px 100%,
+    0 calc(100% - 24px),
+    0 24px
+  );
 
   transition:
     transform 180ms ease,
@@ -1237,21 +1406,24 @@ h6 {
 .contact-label {
   margin-bottom: 8px;
 
-  font-size: 12px;
+  font-size: var(--font-size-small);
   letter-spacing: 0.15em;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 
   opacity: 0.9;
 }
 
 .contact-value {
-  font-size: clamp(24px, 3vw, 48px);
-  font-weight: 500;
+  font-size: clamp(20px, 2.5vw, 42px);
+  font-weight: var(--font-weight-medium);
+
+  white-space: nowrap;
 }
 
 .contact-links a:hover .contact-value {
   color: var(--text);
 }
+
 
 
 /* =========================================================
@@ -1265,8 +1437,8 @@ h6 {
   align-items: center;
   justify-content: center;
 
-  font-weight: 600;
-  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-small);
 
   background: var(--main-white);
   color: var(--main-navy);
@@ -1275,6 +1447,7 @@ h6 {
 .portfolio-footer p {
   margin: 0;
 }
+
 
 
 /* =========================================================
@@ -1306,6 +1479,7 @@ h6 {
 
   transform: rotate(3deg);
 }
+
 
 
 /* =========================================================
@@ -1379,11 +1553,26 @@ h6 {
 }
 
 
+
 /* =========================================================
    MOBILE
 ========================================================= */
 
 @media (max-width: 800px) {
+
+  /* -------------------------------------------------------
+     Typography
+  ------------------------------------------------------- */
+
+  :root {
+    --font-size-display: clamp(48px, 12vw, 80px);
+    --font-size-section-title: clamp(48px, 12vw, 70px);
+    --font-size-large-title: clamp(42px, 12vw, 70px);
+
+    --font-size-body-large: 18px;
+    --font-size-body: 16px;
+  }
+
 
   /* -------------------------------------------------------
      Portfolio
@@ -1407,14 +1596,8 @@ h6 {
     padding: 0 20px;
   }
 
-  .introduction-content h1 {
-    font-size: clamp(48px, 12vw, 80px);
-  }
-
   .introduction-content p {
     max-width: 500px;
-
-    font-size: 18px;
   }
 
 
@@ -1530,10 +1713,6 @@ h6 {
     flex: none;
 
     padding-bottom: 30px;
-  }
-
-  .about-header h2 {
-    font-size: clamp(42px, 12vw, 70px);
   }
 
   .about-intro {
