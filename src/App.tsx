@@ -1,51 +1,93 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+// Images
+import agoImage from "./assets/Ago.png";
+import hackathonImage from "./assets/hackatJ.jpg";
+
+import whiteboardPic from "./assets/whiteboardPic.png";
+import whiteboardPic2 from "./assets/whiteboardPic2.png";
+
+import eShop1 from "./assets/eShop1.png";
+import eShop2 from "./assets/eShop2.png";
+
+import sumo1 from "./assets/sumo1.png";
+import sumo2 from "./assets/sumo2.png";
+
+// Tech logos
+import reactLogo from "./assets/react.svg";
+import typescriptLogo from "./assets/typescript.svg";
+import nodeJSLogo from "./assets/nodeJS.svg";
+import javaLogo from "./assets/java.svg";
+import springLogo from "./assets/spring.svg";
+import postgresqlLogo from "./assets/postgresql.svg";
+import dockerLogo from "./assets/docker.svg";
+import rabbitmqLogo from "./assets/rabbitmq.svg";
+
+// Other SVGs
+import ukFlag from "./assets/uk-flag.svg";
+import estoniaFlag from "./assets/estonia-flag.svg";
+
+import divider1 from "./assets/divider1.svg";
+import divider2 from "./assets/divider2.svg";
+import divider5 from "./assets/divider5.svg";
+import divider6 from "./assets/divider6.svg";
+
 type Language = "en" | "et";
 
 const projects = [
   {
     id: 1,
     title: "Realtime-Whiteboard",
-    images: [
-      "/src/assets/whiteboardPic.png",
-      "/src/assets/whiteboardPic2.png",
-    ],
+    images: [whiteboardPic, whiteboardPic2],
     description:
-      "A realtime collaborative whiteboard, inspired by similar tools like Excalidraw and Windows Paint. Users can draw, erase, and add text to the canvas, with all changes being synchronized in real-time across all connected clients. Currently, the project is in its early stages, and I'm actively working on adding new features and improving the user experience. Built by me and Rando Viimne.",
+      "A realtime collaborative whiteboard built with Canvas and WebSockets. Users can create and manipulate different objects, draw freely, add text, and collaborate on the same board with other users in real time. The project focuses on keeping changes synchronized between clients while allowing users to work independently without overwriting each other's changes. Built by me and Rando Viimne.",
     technologies: ["React", "TypeScript", "Canvas", "WebSockets"],
+    github: "https://github.com/RandoVi/Realtime-Whiteboard",
+    live: "https://your-live-project.com",
   },
   {
     id: 2,
     title: "E-commerce Platform",
-    images: [
-      "/src/assets/eShop1.png",
-      "/src/assets/eShop2.png",
+    images: [eShop1, eShop2],
+    description:
+      "A full-stack e-commerce platform developed as a solo project. It includes product browsing and filtering, user and guest shopping carts, authentication with Google OAuth, order processing, Stripe payments, and an admin dashboard. Built with React, Spring Boot, PostgreSQL, RabbitMQ, and Docker.",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Java",
+      "SpringBoot",
+      "PostgreSQL",
+      "RabbitMQ",
     ],
-    description: "Solo project: A simple e-commerce platform, that turned out to be a great learning experience. It features a product catalog, shopping cart, and checkout process.",
-    technologies: ["React", "TypeScript", "Java", "SpringBoot", "PostgreSQL", "RabbitMQ"],
+    github: "https://github.com/agolaurluik/Roadhouse-E-Commerce",
   },
   {
     id: 3,
     title: "Browser Sumo Game",
-    images: [
-      "/src/assets/sumo1.png",
-      "/src/assets/sumo2.png",
+    images: [sumo1, sumo2],
+    description:
+      "A browser-based multiplayer sumo game with physics-based movement and realtime player synchronization. Instead of traditional four-directional movement, players control their characters through physics-based movement and collisions. Built by me, Rando Viimne, and Jaanus Lille.",
+    technologies: [
+      "TypeScript",
+      "React",
+      "NodeJS",
+      "Canvas",
+      "WebSockets",
     ],
-    description: "Simple browser-based sumo game. Instead of simple four directional movement, this game features more complex physics and interactions. Made by me, Rando Viimne and Jaanus Lille",
-    technologies: ["TypeScript", "React", "NodeJS", "Canvas", "WebSockets"],
-  }
+    github: "https://github.com/agolaurluik/Sumo-Web-game",
+  },
 ];
 
 const techLogos = [
-  "/src/assets/react.svg",
-  "/src/assets/typescript.svg",
-  "/src/assets/nodeJS.svg",
-  "/src/assets/java.svg",
-  "/src/assets/spring.svg",
-  "/src/assets/postgresql.svg",
-  "/src/assets/docker.svg",
-  "/src/assets/rabbitmq.svg",
+  reactLogo,
+  typescriptLogo,
+  nodeJSLogo,
+  javaLogo,
+  springLogo,
+  postgresqlLogo,
+  dockerLogo,
+  rabbitmqLogo,
 ];
 
 const translations = {
@@ -87,17 +129,17 @@ const translations = {
       {
         title: "Realtime-Whiteboard",
         description:
-          "A realtime collaborative whiteboard, inspired by similar tools like Excalidraw and Windows Paint. Users can draw, erase, and add text to the canvas, with all changes being synchronized in real-time across all connected clients. Currently, the project is in its early stages, and I'm actively working on adding new features and improving the user experience. Built by me and Rando Viimne.",
+          "A realtime collaborative whiteboard built with Canvas and WebSockets. Users can create and manipulate different objects, draw freely, add text, and collaborate on the same board with other users in real time. The project focuses on keeping changes synchronized between clients while allowing users to work independently without overwriting each other's changes. Built by me and Rando Viimne.",
       },
       {
         title: "E-commerce Platform",
         description:
-          "Solo project: A simple e-commerce platform that turned out to be a great learning experience. It features a product catalog, shopping cart, and checkout process.",
+          "A full-stack e-commerce platform developed as a solo project. It includes product browsing and filtering, user and guest shopping carts, authentication with Google OAuth, order processing, Stripe payments, and an admin dashboard.",
       },
       {
         title: "Browser Sumo Game",
         description:
-          "Simple browser-based sumo game. Instead of simple four directional movement, this game features more complex physics and interactions. Made by me, Rando Viimne and Jaanus Lille.",
+          "A browser-based multiplayer sumo game with physics-based movement and realtime player synchronization. Instead of traditional four-directional movement, players control their characters through physics-based movement and collisions. Built by me, Rando Viimne, and Jaanus Lille.",
       },
     ],
   },
@@ -140,31 +182,50 @@ const translations = {
       {
         title: "Realtime-Whiteboard",
         description:
-          "Reaalajas töötav koostöötahvel, mis on inspireeritud sellistest tööriistadest nagu Excalidraw ja Windows Paint. Kasutajad saavad lõuendile joonistada, kustutada ja teksti lisada ning kõik muudatused sünkroniseeritakse reaalajas kõigi ühendatud kasutajate vahel. Projekt on hetkel varajases arendusjärgus ning tegelen aktiivselt uute funktsioonide lisamise ja kasutajakogemuse parandamisega. Projekti arendame mina ja Rando Viimne.",
+          "Reaalajas koostööd võimaldav tahvel, mis on ehitatud Canvas'e ja WebSocketite abil. Kasutajad saavad luua ja muuta erinevaid objekte, vabalt joonistada, lisada teksti ning töötada sama tahvli kallal teiste kasutajatega reaalajas. Projekti üks peamisi eesmärke on hoida muudatused erinevate klientide vahel sünkroonis, võimaldades kasutajatel samal ajal iseseisvalt töötada ilma üksteise muudatusi üle kirjutamata. Projekti arendasime koos Rando Viimsega.",
       },
       {
         title: "E-poe platvorm",
         description:
-          "Iseseisev projekt: lihtne e-poe platvorm, millest kujunes väga hea õpikogemus. Projekt sisaldab toodete kataloogi, ostukorvi ja maksmise protsessi.",
+          "Täisfunktsionaalne e-poe rakendus, mille arendasin iseseisva projektina. Rakendus sisaldab toodete sirvimist ja filtreerimist, kasutajate ja külaliste ostukorve, Google OAuth autentimist, tellimuste töötlemist, Stripe'i makseid ning administraatori vaadet.",
       },
       {
         title: "Brauseri Sumo mäng",
         description:
-          "Lihtne brauseris töötav sumomäng. Neljasuunalise lihtsa liikumise asemel kasutab mäng keerukamat füüsikat ja objektide omavahelist suhtlust. Tegime projekti koos Rando Viimse ja Jaanus Lillega.",
+          "Veebipõhine mitme mängijaga sumomäng, mis kasutab füüsikapõhist liikumist ja mängijate reaalajas sünkroniseerimist. Traditsioonilise neljasuunalise liikumise asemel põhineb mäng tegelaste füüsikal, liikumisel ja kokkupõrgetel. Projekti arendasime koos Rando Viimse ja Jaanus Lillega.",
       },
     ],
   },
 };
 
 export default function PortfolioPage() {
-
-  const [activeProject, setActiveProject] = useState(0);
+  const [projectImageIndexes, setProjectImageIndexes] = useState<
+    Record<number, number>
+  >({});
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const [language, setLanguage] = useState<Language>("en");
 
   const t = translations[language];
+
+  const changeProjectImage = (
+    projectId: number,
+    direction: number,
+    imageCount: number
+  ) => {
+    setProjectImageIndexes((current) => {
+      const currentIndex = current[projectId] ?? 0;
+
+      const nextIndex =
+        (currentIndex + direction + imageCount) % imageCount;
+
+      return {
+        ...current,
+        [projectId]: nextIndex,
+      };
+    });
+  };
 
   useEffect(() => {
     const preventScroll = (event: WheelEvent) => {
@@ -183,15 +244,10 @@ export default function PortfolioPage() {
     };
   }, []);
 
-  const project = projects[activeProject];
-  const translatedProject = t.projectsData[activeProject];
-
   return (
     <main className="portfolio">
-
       {/* Introduction */}
       <section id="home" className="introduction-section">
-
         <header className="portfolio-header">
           <div className="portfolio-logo">
             <span className="logo-name">Ago-Laur Luik</span>
@@ -205,32 +261,32 @@ export default function PortfolioPage() {
 
             <div className="language-switch">
               <button
-                className={`language-button ${language === "en" ? "active" : ""}`}
+                className={`language-button ${
+                  language === "en" ? "active" : ""
+                }`}
                 onClick={() => setLanguage("en")}
                 aria-label="Switch to English"
               >
-                <img src="/src/assets/uk-flag.svg" alt="English" />
+                <img src={ukFlag} alt="English" />
               </button>
 
               <button
-                className={`language-button ${language === "et" ? "active" : ""}`}
+                className={`language-button ${
+                  language === "et" ? "active" : ""
+                }`}
                 onClick={() => setLanguage("et")}
                 aria-label="Switch to Estonian"
               >
-                <img src="/src/assets/estonia-flag.svg" alt="Estonian" />
+                <img src={estoniaFlag} alt="Estonian" />
               </button>
             </div>
           </nav>
         </header>
 
         <div className="introduction-content">
-          <h1 className="text-display">
-            FULL-STACK DEVELOPER
-          </h1>
+          <h1 className="text-display">FULL-STACK DEVELOPER</h1>
 
-          <p className="text-body-large">
-            {t.introduction}
-          </p>
+          <p className="text-body-large">{t.introduction}</p>
         </div>
 
         <div className="tech-stack">
@@ -239,45 +295,30 @@ export default function PortfolioPage() {
               key={index}
               className="tech-logo"
               src={logo}
-              alt=""
+              alt={`Technology logo ${index}`}
             />
           ))}
         </div>
 
         <div className="section-divider">
-          <img
-            src="/src/assets/divider7.svg"
-            alt=""
-          />
+          <img src={divider1} alt="Section divider" />
         </div>
-
       </section>
 
       {/* About */}
       <section id="about" className="about-section page-content">
-
         <div className="about-header">
+          <h2 className="text-large-title">{t.aboutMe}</h2>
 
-          <h2 className="text-large-title">
-            {t.aboutMe}
-          </h2>
-
-          <p className="about-intro text-body">
-            {t.aboutIntro}
-          </p>
+          <p className="about-intro text-body">{t.aboutIntro}</p>
         </div>
 
         <div className="about-grid">
-
           <div className="about-image about-profile-image">
-            <img
-              src="/src/assets/Ago.png"
-              alt="Ago-Laur Luik"
-            />
+            <img src={agoImage} alt="Ago-Laur Luik" />
           </div>
 
           <div className="about-text">
-
             <div className="about-block about-background">
               <span className="about-label text-label">
                 {t.background}
@@ -291,9 +332,7 @@ export default function PortfolioPage() {
                 {t.currently}
               </span>
 
-              <p className="text-body-small">
-                {t.currentlyText}
-              </p>
+              <p className="text-body-small">{t.currentlyText}</p>
             </div>
 
             <div className="about-block about-hackathons">
@@ -301,129 +340,150 @@ export default function PortfolioPage() {
                 {t.hackathons}
               </span>
 
-              <p className="text-body-small">
-                {t.hackathonsText}
-              </p>
+              <p className="text-body-small">{t.hackathonsText}</p>
 
               <div className="about-image about-hackathon-image">
                 <img
-                  src="/src/assets/hackatJ.jpg"
-                  alt="Junction 2025 hackathon"
+                  src={hackathonImage}
+                  alt="Junction 2025 hackathon, Me and my team with people from Pfizer × Lääkärikeskus Aava challenge"
                 />
               </div>
             </div>
-
           </div>
         </div>
 
         <div className="section-divider">
-          <img
-            src="/src/assets/divider5.svg"
-            alt=""
-          />
+          <img src={divider5} alt="Section divider" />
         </div>
       </section>
 
       {/* Projects */}
       <section id="projects" className="projects page-content">
-
         <div className="projects-header">
-          <h2 className="text-section-title">
-            {t.projects}
-          </h2>
+          <h2 className="text-section-title">{t.projects}</h2>
         </div>
 
-        <aside className="project-navigation">
-          {projects.map((project, index) => (
-            <button
-              key={project.id}
-              className={`project-navigation-item ${index === activeProject ? "active" : ""
-                }`}
-              onClick={() => setActiveProject(index)}
-            >
-              <span className="project-number text-label">
-                0{project.id}
-              </span>
+        <div className="projects-grid">
+          {projects.slice(0, 4).map((project, index) => {
+            const imageIndex = projectImageIndexes[project.id] ?? 0;
+            const currentImage = project.images[imageIndex];
 
-              <span className="project-title">
-                {t.projectsData[index].title}
-              </span>
-            </button>
-          ))}
-        </aside>
+            return (
+              <article
+                key={project.id}
+                className="project-card"
+              >
+                {/* Project image */}
+                <div className="project-card-image">
+                  <img
+                    src={currentImage}
+                    alt={`${project.title} screenshot ${
+                      imageIndex + 1
+                    }`}
+                    onClick={() => setSelectedImage(currentImage)}
+                  />
 
-        <div className="project-content">
+                  {project.images.length > 1 && (
+                    <>
+                      <button
+                        className="project-image-arrow project-image-arrow-left"
+                        onClick={() =>
+                          changeProjectImage(
+                            project.id,
+                            -1,
+                            project.images.length
+                          )
+                        }
+                        aria-label="Previous project image"
+                      >
+                        ←
+                      </button>
 
-          <div className="project-description">
-            <div>
-              <p className="project-label text-label">
-                {t.project} {String(project.id).padStart(2, "0")}
-              </p>
+                      <button
+                        className="project-image-arrow project-image-arrow-right"
+                        onClick={() =>
+                          changeProjectImage(
+                            project.id,
+                            1,
+                            project.images.length
+                          )
+                        }
+                        aria-label="Next project image"
+                      >
+                        →
+                      </button>
 
-              <h2 className="text-section-title">
-                {t.projectsData[activeProject].title}
-              </h2>
+                      <div className="project-image-counter">
+                        {imageIndex + 1} / {project.images.length}
+                      </div>
+                    </>
+                  )}
+                </div>
 
-              <p className="description text-body-small">
-                {translatedProject.description}
-              </p>
-            </div>
+                {/* Project information */}
+                <div className="project-card-content">
+                  <h3 className="project-card-title">
+                    {t.projectsData[index].title}
+                  </h3>
 
-            <div className="project-bottom">
-              <div className="technologies">
-                {project.technologies.map((technology) => (
-                  <span key={technology}>
-                    {technology}
-                  </span>
-                ))}
-              </div>
+                  <p className="project-card-description">
+                    {t.projectsData[index].description}
+                  </p>
 
-              <div className="project-links">
-                <a href="#"> {t.liveDemo}</a>
-                <a href="#"> {t.github}</a>
-              </div>
-            </div>
-          </div>
+                  <div className="project-card-technologies">
+                    {project.technologies.map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
 
-          <div className="project-visual">
-            {project.images.map((image, index) => (
-              <img
-                key={image}
-                src={image}
-                alt={`${project.title} screenshot ${index + 1}`}
-                onClick={() => setSelectedImage(image)}
-              />
-            ))}
-          </div>
+                  <div className="project-card-links">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t.github}
+                    </a>
 
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t.liveDemo}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         <div className="section-divider">
-          <img
-            src="/src/assets/divider8.svg"
-            alt=""
-          />
+          <img src={divider2} alt="Section divider" />
         </div>
-
       </section>
-
 
       {/* Contact */}
       <section id="contact" className="contact page-content">
-
         <div className="contact-title">
           <h2 className="text-section-title">
             {t.contact} & Info
           </h2>
         </div>
-        <div className="contact-list">
 
+        <div className="contact-list">
           <div className="contact-links">
             <a href="mailto:ago.laur@gmail.com">
               <span className="contact-label text-label">
                 {t.email}
               </span>
-              <span className="contact-value">ago.laur@gmail.com</span>
+
+              <span className="contact-value">
+                ago.laur@gmail.com
+              </span>
             </a>
 
             <a
@@ -434,30 +494,38 @@ export default function PortfolioPage() {
               <span className="contact-label text-label">
                 {t.linkedin}
               </span>
-              <span className="contact-value">LinkedIn ↗</span>
+
+              <span className="contact-value">
+                LinkedIn ↗
+              </span>
             </a>
 
-            <a href="https://www.dropbox.com/scl/fi/your-cv-file.pdf?rlkey=your-key&dl=1" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://docs.google.com/document/d/197vtPnk_0u667A93028na5o_3S0T2Zbnf4FK0sjsPYo/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="contact-label text-label">
                 {t.curriculumVitae}
               </span>
-              <span className="contact-value">Ago-Laur Luik</span>
+
+              <span className="contact-value">
+                Ago-Laur Luik
+              </span>
             </a>
           </div>
         </div>
 
         <div className="section-divider">
-          <img
-            src="/src/assets/divider6.svg"
-            alt=""
-          />
+          <img src={divider6} alt="" />
         </div>
-
       </section>
 
-
+      {/* Image lightbox */}
       <div
-        className={`image-lightbox ${selectedImage ? "open" : ""}`}
+        className={`image-lightbox ${
+          selectedImage ? "open" : ""
+        }`}
         onClick={() => setSelectedImage(null)}
       >
         <button
@@ -477,13 +545,9 @@ export default function PortfolioPage() {
         )}
       </div>
 
-
-
       <footer className="portfolio-footer">
         <p>{t.footer}</p>
       </footer>
     </main>
-
-
   );
 }
