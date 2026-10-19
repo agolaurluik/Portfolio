@@ -501,7 +501,7 @@ export default function PortfolioPage() {
             </a>
 
             <a
-              href="https://docs.google.com/document/d/197vtPnk_0u667A93028na5o_3S0T2Zbnf4FK0sjsPYo/edit?usp=sharing"
+              href="https://docs.google.com/document/d/197vtPnk_0u667A93028na5o_3S0T2Zbnf4FK0sjsPYo/edit?usp=sharinghttps://docs.google.com/document/d/e/2PACX-1vQbypKC7WB8ibHJ8h0YopDtJR2pDXcDvQs1xReaoPOVn7A7-csctxhkI1_bgaIP9jJIu8LNiEQwQ3Dd/pub"
               target="_blank"
               rel="noopener noreferrer"
             >
