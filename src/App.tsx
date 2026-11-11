@@ -14,6 +14,11 @@ import eShop2 from "./assets/eShop2.png";
 import sumo1 from "./assets/sumo1.png";
 import sumo2 from "./assets/sumo2.png";
 
+import signal1 from "./assets/signal1.png";
+import signal2 from "./assets/signal2.png";
+
+import winglink1 from "./assets/winglink1.png";
+ 
 // Tech logos
 import reactLogo from "./assets/react.svg";
 import typescriptLogo from "./assets/typescript.svg";
@@ -44,7 +49,7 @@ const projects = [
       "A realtime collaborative whiteboard built with Canvas and WebSockets. Users can create and manipulate different objects, draw freely, add text, and collaborate on the same board with other users in real time. The project focuses on keeping changes synchronized between clients while allowing users to work independently without overwriting each other's changes. Built by me and Rando Viimne.",
     technologies: ["React", "TypeScript", "Canvas", "WebSockets"],
     github: "https://github.com/RandoVi/Realtime-Whiteboard",
-    live: "https://your-live-project.com",
+    // live: "https://project.com",
   },
   {
     id: 2,
@@ -76,6 +81,31 @@ const projects = [
       "WebSockets",
     ],
     github: "https://github.com/agolaurluik/Sumo-Web-game",
+  },
+  {
+    id: 4,
+    title: "Signal",
+    images: [signal1, signal2],
+    description:
+      "A 2D side-scrolling platformer developed for a game jam. You play as a damaged robot that awakens in a world on the brink of destruction, missing one of its arms but still carrying a single command: save humanity. Your objective is to reach a distant skyscraper and activate a signal that could change the fate of the world.",
+    technologies: ["Godot", "GDScript"],
+    itch: "https://agolaurluik.itch.io/signal",
+  },
+  {
+    id: 5,
+    title: "WingLINK",
+    images: [winglink1],
+    description:
+      "A social networking platform designed to help people discover and connect with others based on shared interests, personality, and location. Users can create profiles, discover potential connections within a selected distance, send connection requests, and communicate through realtime chat.",
+    technologies: [
+      "React",
+      "Java",
+      "Spring Boot",
+      "PostgreSQL",
+      "PostGIS",
+      "WebSockets",
+    ],
+    github: "YOUR_GITHUB_LINK",
   },
 ];
 
@@ -117,6 +147,7 @@ const translations = {
 
     project: "PROJECT",
     liveDemo: "Live Demo ↗",
+    itch: "Itch.io ↗",
     github: "GitHub ↗",
 
     email: "EMAIL",
@@ -140,6 +171,16 @@ const translations = {
         title: "Browser Sumo Game",
         description:
           "A browser-based multiplayer sumo game with physics-based movement and realtime player synchronization. Instead of traditional four-directional movement, players control their characters through physics-based movement and collisions. Built by me, Rando Viimne, and Jaanus Lille.",
+      },
+      {
+        title: "Signal",
+        description:
+          "A 2D side-scrolling platformer developed for a game jam. You play as a damaged robot that awakens in a world on the brink of destruction, missing one of its arms but still carrying a single command: save humanity. Your objective is to reach a distant skyscraper and activate a signal that could change the fate of the world.",
+      },
+            {
+        title: "WingLINK",
+        description:
+          "A social networking platform designed to help people discover and connect with others based on shared interests, personality, and location. Users can create profiles, discover potential connections within a selected distance, send connection requests, and communicate through realtime chat.",
       },
     ],
   },
@@ -170,6 +211,7 @@ const translations = {
 
     project: "PROJEKT",
     liveDemo: "Live Demo ↗",
+    itch: "Itch.io ↗",
     github: "GitHub ↗",
 
     email: "E-POST",
@@ -194,6 +236,16 @@ const translations = {
         description:
           "Veebipõhine mitme mängijaga sumomäng, mis kasutab füüsikapõhist liikumist ja mängijate reaalajas sünkroniseerimist. Traditsioonilise neljasuunalise liikumise asemel põhineb mäng tegelaste füüsikal, liikumisel ja kokkupõrgetel. Projekti arendasime koos Rando Viimse ja Jaanus Lillega.",
       },
+      {
+        title: "Signal",
+        description:
+          "2D külgvaates platvormimäng, mis on loodud mänguarenduse häkatoni raames. Mängid kahjustatud robotina, kes ärkab maailmas, mis on hävimise äärel. Üks käsi on puudu, kuid alles on jäänud üks käsk: päästa inimkond. Sinu ülesanne on jõuda kaugel asuva pilvelõhkujani ja aktiveerida signaal, mis võib muuta maailma saatust.",
+      },
+      {
+        title: "WingLINK",
+        description:
+          "Sotsiaalvõrgustiku platvorm, mis aitab inimestel avastada ja ühenduda teistega, kellel on sarnased huvid, isiksus ja asukoht. Kasutajad saavad luua profiile, leida potentsiaalseid kontakte valitud kaugusel, saata ühenduse taotlusi ja suhelda reaalajas vestluse kaudu.",
+      }
     ],
   },
 };
@@ -244,6 +296,24 @@ export default function PortfolioPage() {
     };
   }, []);
 
+  // EMAIL COPY FUNCTIONALITY
+
+  const email = "ago.laur@gmail.com";
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Failed to copy email:", error);
+    }
+  };
+
   return (
     <main className="portfolio">
       {/* Introduction */}
@@ -261,9 +331,8 @@ export default function PortfolioPage() {
 
             <div className="language-switch">
               <button
-                className={`language-button ${
-                  language === "en" ? "active" : ""
-                }`}
+                className={`language-button ${language === "en" ? "active" : ""
+                  }`}
                 onClick={() => setLanguage("en")}
                 aria-label="Switch to English"
               >
@@ -271,9 +340,8 @@ export default function PortfolioPage() {
               </button>
 
               <button
-                className={`language-button ${
-                  language === "et" ? "active" : ""
-                }`}
+                className={`language-button ${language === "et" ? "active" : ""
+                  }`}
                 onClick={() => setLanguage("et")}
                 aria-label="Switch to Estonian"
               >
@@ -364,7 +432,7 @@ export default function PortfolioPage() {
         </div>
 
         <div className="projects-grid">
-          {projects.slice(0, 4).map((project, index) => {
+          {projects.slice(0, 5).map((project, index) => {
             const imageIndex = projectImageIndexes[project.id] ?? 0;
             const currentImage = project.images[imageIndex];
 
@@ -377,9 +445,8 @@ export default function PortfolioPage() {
                 <div className="project-card-image">
                   <img
                     src={currentImage}
-                    alt={`${project.title} screenshot ${
-                      imageIndex + 1
-                    }`}
+                    alt={`${project.title} screenshot ${imageIndex + 1
+                      }`}
                     onClick={() => setSelectedImage(currentImage)}
                   />
 
@@ -437,13 +504,25 @@ export default function PortfolioPage() {
                   </div>
 
                   <div className="project-card-links">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t.github}
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t.github}
+                      </a>
+                    )}
+
+                    {project.itch && (
+                      <a
+                        href={project.itch}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        itch.io ↗
+                      </a>
+                    )}
 
                     {project.live && (
                       <a
@@ -476,13 +555,19 @@ export default function PortfolioPage() {
 
         <div className="contact-list">
           <div className="contact-links">
-            <a href="mailto:ago.laur@gmail.com">
+            <a >
               <span className="contact-label text-label">
                 {t.email}
               </span>
 
-              <span className="contact-value">
-                ago.laur@gmail.com
+              <span
+                className="contact-value"
+                onClick={handleCopyEmail}
+                role="button"
+                tabIndex={0}
+                title="Click to copy email"
+              >
+                {copied ? "Copied!" : "ago.laur@gmail.com"}
               </span>
             </a>
 
@@ -523,9 +608,8 @@ export default function PortfolioPage() {
 
       {/* Image lightbox */}
       <div
-        className={`image-lightbox ${
-          selectedImage ? "open" : ""
-        }`}
+        className={`image-lightbox ${selectedImage ? "open" : ""
+          }`}
         onClick={() => setSelectedImage(null)}
       >
         <button

@@ -1393,10 +1393,15 @@ h6 {
 }
 
 .contact-value {
-  font-size: clamp(20px, 2.5vw, 42px);
+  font-size: clamp(15px, 2.5vw, 32px);
   font-weight: var(--font-weight-medium);
 
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.contact-value:hover {
+  text-decoration: underline;
 }
 
 .contact-links a:hover .contact-value {
