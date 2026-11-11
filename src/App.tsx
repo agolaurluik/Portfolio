@@ -523,16 +523,6 @@ export default function PortfolioPage() {
                         itch.io ↗
                       </a>
                     )}
-
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {t.liveDemo}
-                      </a>
-                    )}
                   </div>
                 </div>
               </article>
